@@ -16,6 +16,7 @@ function playSong(songId) {
     selectedSong.classList.add(classes);
 }
 
+
 /**
  * Creates a song DOM element based on a song object.
  */
@@ -80,7 +81,11 @@ function createElement(tagName, children = [], classes = [], attributes = {}, id
     {
         element.appendChild(child);
     }
-    element.classList.add(classes);
+    for (let cls of classes)
+    {
+        element.classList.add(cls);
+    }
+    
     Object.entries(attributes).forEach(([key,value]) => {
         if (key !== undefined) {
             element.setAttribute(key, value);
