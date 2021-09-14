@@ -1,18 +1,1 @@
-html,
-body {
-    text-align: center;
-    margin: 0%;
-    padding: 0%;
-}
-
-.song {
-    font-size: 24px;
-}
-
-.selected {
-    border: 5px red thin;
-}
-
-ul {
-    list-style: none;
-}
+/* Your code here */
