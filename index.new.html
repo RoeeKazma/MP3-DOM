@@ -9,8 +9,8 @@
         <script src="./scripts/index.new.js" defer></script>
     </head>
     <body>
-        <h1>Awesome Player!!!</h1>
-        <div id="add-section">
+        <h1>Roee Kazma's Mp3</h1>
+        <!-- <div id="add-section">
             <h2>Add a new song</h2>
             <div id="inputs">
                 <input name="title" placeholder="Title">
@@ -20,7 +20,53 @@
                 <input name="cover-art" placeholder="Cover art link">
             </div>
             <button id="add-button">Add</button>
+        </div> -->
+        <div id="add-section">
+
+            <h2>Add a new song here</h2>
+
+            <div>
+                <form action="" id="add-song" class="add-song-class">
+
+                    
+                    <label id="title-label" for="title">
+                        <input type="text" id="title" name="title" placeholder="Title Name" required>
+                    </label>
+
+                    <label id="album-label" for="album">
+                        <input type="text" id="album" name="album" placeholder="Album Name" required>
+                    </label>
+
+                    
+                    <label id="artist-label" for="artist">
+                        <input type="text" id="artist" name="artist" placeholder="Artist Name" required>
+                    </label>
+
+                    <label id="duration-label" for="duration">
+                        <input type="text" id="duration" name="duration" placeholder="Duration Time (ss:mm)" required>
+                    </label>
+
+                    <label id="cover-art-label" for="cover-art">
+                        <input type="url" id="cover-art" name="cover-art" placeholder="Cover art" required> 
+                    </label>
+
+                    <input type="button" id="submit" value="Add this song"
+                    onclick="addSong(
+                        document.getElementById('title').value,
+                        document.getElementById('album').value,
+                        document.getElementById('artist').value,
+                        document.getElementById('duration').value,
+                        document.getElementById('cover-art').value,
+
+                     )">
+
+
+                </form>
+            </div>
         </div>
+
+
+
         <div id="songs">
             <h2>Songs</h2>
             <div class="list">

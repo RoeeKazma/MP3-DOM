@@ -68,7 +68,7 @@ function durationConvertor (duration) // convert duration format from seconds to
   let sec="";
   if (typeof(duration) !== "number")
   {
-    throw "Please Enter a number"
+    throw new Error ("Please Enter a number")
   }
   min = Math.floor(duration/60);
   sec = duration%60;
@@ -88,6 +88,14 @@ function durationConvertor (duration) // convert duration format from seconds to
   else {
     return(min+":"+sec) 
   }
+}
+
+function reverseDurationConvertor (duration) // convert duration format from MM:SS to seconds format
+{
+  duration = duration.split(':')
+  let minutes = parseInt(duration[0]) * 60
+  let seconds = parseInt(duration[1])
+  return minutes + seconds
 }
 
 function sortedSongs () {
@@ -114,6 +122,7 @@ function printAllSongs()
         songPrint.appendChild(songElem);
     }
 }
+
 function printAllPlaylists()
 {
     const playlistPrint = document.getElementById("playlists")
@@ -127,4 +136,68 @@ function printAllPlaylists()
         playlistPrint.appendChild(playlistElem);
     }
 }
+
+function addSong(title, album, artist, duration, coverArt, id) {
+
+    if (findSongById(id) !== undefined)
+    {
+      throw "There is already a song with this ID"
+    }
+    
+    if (id === undefined) 
+    {
+      id = Math.floor(Math.random()*50);
+      while (id === findSongById(id)) //by defult the id will be a random number, but if there is already a song with the same id it will generate a new one until the new id is a unique one.
+      {
+        id = Math.floor(Math.random()*50);
+      }
+    }
+  
+      const addedSong = // making a new song to push to the array
+      {
+          id: id,
+          title: title,
+          album: album,
+          artist: artist,
+          duration: reverseDurationConvertor(duration),
+          coverArt: coverArt
+
+      };
+      
+      player.songs.push(addedSong);
+      console.log(addedSong);
+      console.log(player.songs);
+      createSongElement(id, title, album, duration, coverArt)
+      return addedSong["id"];
+  }
+
+function removeSong(id) {
+    if (findSongById(id)===undefined)
+    {
+      throw "This is not a valid ID"
+    }
+    else {
+      let songIndex= player.songs.indexOf(findSongById(id));
+      player.songs.splice(songIndex,1); // removes the song from player.songs
+  
+      for (let i of player.playlists) // removes the song from all the playlists 
+      {
+        for (let j = 0; j < i.songs.length; j++)
+        {
+          if (i.songs[j] === id)
+          {
+            i.songs.splice(j,1);
+          }
+        }
+      }
+    }
+}
+
+function findSongById (id)
+{
+  let idToSongConvertor= player["songs"].find(finder=> finder["id"]===id);
+  return idToSongConvertor;
+}
+
+
  

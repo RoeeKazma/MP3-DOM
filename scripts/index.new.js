@@ -17,22 +17,6 @@ function playSong(songId) {
 }
 
 /**
- * Removes a song from the player, and updates the DOM to match.
- *
- * @param {Number} songId - the ID of the song to remove
- */
-function removeSong(songId) {
-    // Your code here
-}
-
-/**
- * Adds a song to the player, and updates the DOM to match.
- */
-function addSong({ title, album, artist, duration, coverArt }) {
-    // Your code here
-}
-
-/**
  * Acts on a click event on an element inside the songs list.
  * Should handle clicks on play buttons and remove buttons of songs.
  *
@@ -98,7 +82,7 @@ function createPlaylistElement({ id, name, songs }) {
 }
 
 
-function createElement(tagName, children = [], classes = [], attributes = {}, eventListeners = {}, id) {
+function createElement(tagName, children = [], classes = [], attributes = {}, id, eventListeners = {}) {
     const element = document.createElement(tagName);
     for (let child of children)
     {
@@ -134,4 +118,4 @@ printAllSongs();
 printAllPlaylists();
 
 // Making the add-song-button actually do something
-document.getElementById("add-button").addEventListener("click", handleAddSongEvent)
+// document.getElementById("add-button").addEventListener("click", handleAddSongEvent)
