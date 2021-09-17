@@ -110,7 +110,6 @@ function printAllSongs()
                 duration: duration,
                 coverArt: coverArt} = song;
         const songElem = createSongElement(id, title, album, artist, duration, coverArt);
-        console.log(id);
 
         songPrint.appendChild(songElem);
     }
