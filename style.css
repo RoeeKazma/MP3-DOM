@@ -38,9 +38,7 @@ h1 {
   align-items: center;
 }
 
-label {
-  
-}
+
 .playlist {
   
   display: flex;
@@ -51,9 +49,7 @@ label {
     font-size: larger;
     
 }
-img {
- 
-}
+
 
 .selected {
     border: 3px solid green;

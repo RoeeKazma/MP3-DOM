@@ -125,7 +125,11 @@ function printAllSongs()
 
 function printAllPlaylists()
 {
+  
     const playlistPrint = document.getElementById("playlists")
+    while (playlistPrint.firstChild) {
+      playlistPrint.firstChild.remove();
+    }
 
     for(let playlist of player.playlists)
     {
@@ -135,6 +139,7 @@ function printAllPlaylists()
         const playlistElem = createPlaylistElement(id, name, songs);
         playlistPrint.appendChild(playlistElem);
     }
+
 }
 
 function addSong(title, album, artist, duration, coverArt, id) {

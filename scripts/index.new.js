@@ -61,20 +61,51 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
     const labelsDiv = document.createElement("div");
     labelsDiv.className = "songLabels";
 
+
     labelsDiv.appendChild(idLbl);
     labelsDiv.appendChild(titleLbl);
     labelsDiv.appendChild(albumLbl);
     labelsDiv.appendChild(artistLbl);
 
-    children.push(currentImg);
-    children.push(labelsDiv);
-    children.push(durationLbl);
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.className = "buttonsDiv";
+
+    const removeButton = document.createElement("button");
+    removeButton.className = "removeButton";
+    removeButton.innerText = "Remove Song"; 
+
+    const newId = arguments[0];
+    removeButton.addEventListener('click', function() { 
+        document.getElementById(newId).remove();
+        removeSong(newId)
+        printAllPlaylists();
+    }, false);
+
+    const playButton = document.createElement("button");
+    playButton.className = "playButton";
+    playButton.innerText = "Play Song";
+
+    
+    playButton.addEventListener('click', function() { 
+        playSong(newId)
+    }, false);
     
 
 
+    
+    buttonsDiv.appendChild(removeButton);
+    buttonsDiv.appendChild(playButton);
+    buttonsDiv.appendChild(durationLbl)
+
+    children.push(currentImg);
+    children.push(labelsDiv);
+    children.push(buttonsDiv);
+    
+    
+
     const classes = []
     classes.push(["song"]) // CSS later
-    const attrs = { onclick: `playSong(${arguments[0]})`,}
+    const attrs = {}
     const eventListeners = {}
     // console.log("Create Song Element Funtion Worked");
     return createElement("div", children, classes, attrs, arguments[0], eventListeners)
@@ -131,8 +162,6 @@ function createElement(tagName, children = [], classes = [], attributes = {}, id
         }
     })
     element.id = id;
-    
-    
     return element;
 }
 
