@@ -103,7 +103,7 @@ function sortSongs () {
 }
 
 function sortedPlaylists () {
-    player.playlists.sort((a, b) => (a.title > b.title) * 2 - 1)
+    player.playlists.sort((a, b) => (a.name > b.name) * 2 - 1)
 }
 
 function printAllSongs()
@@ -212,5 +212,21 @@ function findSongById (id)
   return idToSongConvertor;
 }
 
+
+function removePlaylist(id) {
+  let isExist=false;  
+  for (let i = 0; i<player.playlists.length; i++)
+  {
+    if (player.playlists[i]["id"] === id)
+    {
+      player.playlists.splice(i, 1)
+      isExist=true;
+    }
+  }
+    if (!isExist)
+    {
+      throw "There isnt a playlist with this ID"
+    }
+}
 
  

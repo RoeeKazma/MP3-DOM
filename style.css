@@ -3,12 +3,15 @@ body {
     text-align: center;
     margin: 0px;
     padding: 0px;
-    background: linear-gradient(transparent,#9eccdb)
+    background: linear-gradient(#d4d4d456,#ffffff, #d4d4d456);
+    font-family: sans-serif;
+    
 }
 
 h1 {
     text-align: center;
 }
+
 .songs {
   font-size: larger;
   display: flex;
@@ -21,7 +24,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   width: 75%;
-  border: 5px solid rebeccapurple;
+  border-bottom: 5px solid #BC986A;
   padding: 10px;
   margin-bottom: 10px;
   
@@ -44,6 +47,7 @@ button {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
 }
+
 button:hover {
 	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
 	background-color:#408c99;
@@ -60,21 +64,82 @@ button:hover {
 .songLabels {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  width: 35%;
+  color: #2a3b3b;
+  font-size: 20px;
+}
+
+label {
+  margin-bottom: 10px;
+  
+}
+
+.durationLbl{
+  margin-top: 10px; 
+  color: #3d3d3d;
+}
+
+.playlists {
+  font-size: larger;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 
 .playlist {
   display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.playlists {
-    font-size: larger;   
+  align-items: center;
+  justify-content: space-around;
+  width: 75%;
+  border-bottom: 5px solid #BC986A;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
+.playlistLabels {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 35%;
+  color: #2a3b3b;
+  font-size: 20px;
+  padding: 10px 0;
+  margin-left: 28%;
+}
+
+label > input {
+  width: 10%;
+  justify-content: space-evenly;
+  border: 2px solid black;
+  padding: 3px;
+  display: inline-block;
+  border-radius: 9999em;
+}
+
+.addButton{
+  margin-bottom: 5px;
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius: 8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size: 16px;
+	font-weight:bold;
+	padding: 7px 16px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+#songsHeader {
+  border-bottom: 5px solid #3d768a;
+  
+}
 
 .selected {
-    border: 3px solid green;
+    border: 3px solid #599bb3;
     border-radius: 15px;
 }

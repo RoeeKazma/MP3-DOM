@@ -1,9 +1,4 @@
-/**
- * Plays a song from the player.
- * Playing a song means changing the visual indication of the currently playing song.
- *
- * @param {Number} songId - the ID of the song to play
- */
+
 function playSong(songId) {
     const selectedSong = document.getElementById(songId);
     const classes = []
@@ -16,43 +11,42 @@ function playSong(songId) {
     selectedSong.classList.add(classes);
 }
 
-
-/**
- * Acts on a click event on an element inside the songs list.
- * Should handle clicks on play buttons and remove buttons of songs.
- *
- * @param {MouseEvent} event - the click event
- */
-function handleSongClickEvent(event) {
-    // Your code here
-}
-
-/**
- * Handles a click event on the button that adds songs.
- *
- * @param {MouseEvent} event - the click event
- */
-function handleAddSongEvent(event) {
-    // Your code here
+function playPlaylist (playlistId) {
+    const classes = []
+    classes.push(["selected"])
+    const playlists = document.getElementsByClassName("playlist");
+    
+    
+    for (let playlist of playlists) {
+        if (playlist.id == playlistId)
+        {
+            console.log(playlist);
+            playlist.classList.add(classes);
+        }
+        else {
+            playlist.classList.remove(classes)
+        }
+    }
+    
 }
 
 function createSongElement({ id, title, album, artist, duration, coverArt }) { 
     const children = []
 
     const idLbl = document.createElement("label");
-    idLbl.innerText = arguments[0];
+    idLbl.innerText = "Id: " + arguments[0];
 
     const titleLbl = document.createElement("label");
-    titleLbl.innerText = arguments[1];
+    titleLbl.innerText = "Title: " + arguments[1];
     
     const albumLbl = document.createElement("label");
-    albumLbl.innerText = arguments[2];
+    albumLbl.innerText = "Album: " + arguments[2];
 
     const artistLbl = document.createElement("label");
-    artistLbl.innerText = arguments[3];
+    artistLbl.innerText = "Artist: " + arguments[3];
 
     const durationLbl = document.createElement("label");
-    durationLbl.innerText = durationConvertor(arguments[4]);
+    durationLbl.innerText = "Duration: " + durationConvertor(arguments[4]);
     durationLbl.className = "durationLbl";
 
     const currentImg= document.createElement("img");
@@ -117,17 +111,52 @@ function createPlaylistElement({ id, name, songs }) {
     const children = []
 
     const idLbl = document.createElement("label");
-    idLbl.innerText = arguments[0]
+    idLbl.innerText = "Id: " + arguments[0]
 
     const nameLbl = document.createElement("label");
-    nameLbl.innerText = arguments[1]
+    nameLbl.innerText = "Name: " + arguments[1]
 
     const songsLbl = document.createElement("label");
-    songsLbl.innerText = arguments[2];
+    songsLbl.innerText = "Songs Id's: " + arguments[2];
 
-    children.push(idLbl);
-    children.push(nameLbl);
-    children.push(songsLbl);
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.className = "buttonsDiv";
+
+    const labelsDiv = document.createElement("div");
+    labelsDiv.className = "playlistLabels";
+
+    labelsDiv.appendChild(idLbl);
+    labelsDiv.appendChild(nameLbl);
+    labelsDiv.appendChild(songsLbl);
+    
+
+    const removeButton = document.createElement("button");
+    removeButton.className = "removeButton";
+    removeButton.innerText = "Remove Playlist"; 
+
+    const newId = arguments[0];
+    removeButton.addEventListener('click', function() { 
+        document.getElementById(newId).remove();
+        removePlaylist(newId)
+        printAllPlaylists();
+    }, false);
+
+    
+
+    const playButton = document.createElement("button");
+    playButton.className = "playButton";
+    playButton.innerText = "Play Playlist";
+
+    
+    playButton.addEventListener('click', function() { 
+        playPlaylist(newId)
+    }, false);
+     
+    buttonsDiv.appendChild(removeButton);
+    buttonsDiv.appendChild(playButton);
+
+    children.push(labelsDiv);
+    children.push(buttonsDiv);
    
     const classes = []
     classes.push(["playlist"]) // CSS later
@@ -173,5 +202,3 @@ printAllSongs();
 
 printAllPlaylists();
 
-// Making the add-song-button actually do something
-// document.getElementById("submit").addEventListener("click", handleAddSongEvent)

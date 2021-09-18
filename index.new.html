@@ -50,7 +50,7 @@
                         <input type="url" id="cover-art" name="cover-art" placeholder="Cover art" required> 
                     </label>
 
-                    <input type="button" id="submit" value="Add this song"
+                    <input class="addButton" type="button" id="submit" value="Add this song"
                     onclick="addSong(
                         document.getElementById('title').value,
                         document.getElementById('album').value,
@@ -67,7 +67,7 @@
 
 
         <div class="songs" id="songs">
-            <h2>Songs</h2>
+            <h2 id="songsHeader">Songs</h2>
             
         </div>
         <div class="playlists" id="playlists">
