@@ -35,8 +35,7 @@ function handleAddSongEvent(event) {
     // Your code here
 }
 
-
-function createSongElement({ id, title, album, artist, duration, coverArt }) {
+function createSongElement({ id, title, album, artist, duration, coverArt }) { 
     const children = []
     const ul = document.createElement("ul");
     for (let i = 0; i < 5; i++)
@@ -49,14 +48,19 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
         list.innerText = arguments[i]
         ul.append(list);
     }
+
+    const titleLbl = document.createElement("label");
+    titleLbl.title = arguments[1];
     let currentImg= document.createElement("img");
-    currentImg.src= arguments[5];
+    currentImg.src = arguments[5];
     ul.appendChild(currentImg);
-    children.push(ul)
+    // children.push(ul)
+     children.push(titleLbl);
     const classes = []
     classes.push(["song"]) // CSS later
     const attrs = { onclick: `playSong(${arguments[0]})`,}
     const eventListeners = {}
+    // console.log("Create Song Element Funtion Worked");
     return createElement("div", children, classes, attrs, arguments[0], eventListeners)
     
 }
@@ -106,10 +110,12 @@ function createElement(tagName, children = [], classes = [], attributes = {}, id
         }
     })
     element.id = id;
+    
+    
     return element;
 }
 
-sortedSongs();
+sortSongs();
 
 sortedPlaylists(); 
 
@@ -118,4 +124,4 @@ printAllSongs();
 printAllPlaylists();
 
 // Making the add-song-button actually do something
-// document.getElementById("add-button").addEventListener("click", handleAddSongEvent)
+// document.getElementById("submit").addEventListener("click", handleAddSongEvent)

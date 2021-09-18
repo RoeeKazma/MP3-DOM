@@ -66,10 +66,10 @@ function durationConvertor (duration) // convert duration format from seconds to
 {
   let min="";
   let sec="";
-  if (typeof(duration) !== "number")
-  {
-    throw new Error ("Please Enter a number")
-  }
+  // if (typeof(duration) !== "number")
+  // {
+  //   throw new Error ("Please Enter a number")
+  // }
   min = Math.floor(duration/60);
   sec = duration%60;
   
@@ -98,8 +98,8 @@ function reverseDurationConvertor (duration) // convert duration format from MM:
   return minutes + seconds
 }
 
-function sortedSongs () {
-    player.songs.sort((a, b) => (a.title > b.title) * 2 - 1)
+function sortSongs () {
+    player.songs.sort((a, b) => (a.title.toLocaleLowerCase() > b.title.toLocaleLowerCase()) * 2 - 1)
 }
 
 function sortedPlaylists () {
@@ -108,8 +108,8 @@ function sortedPlaylists () {
 
 function printAllSongs()
 {
-    const songPrint = document.getElementById("songs");
 
+    const songPrint = document.getElementById("songs");
     for(let song of player.songs)
     {
         const { id: id,
@@ -141,7 +141,7 @@ function addSong(title, album, artist, duration, coverArt, id) {
 
     if (findSongById(id) !== undefined)
     {
-      throw "There is already a song with this ID"
+      throw new Error("There is already a song with this ID")
     }
     
     if (id === undefined) 
@@ -165,9 +165,17 @@ function addSong(title, album, artist, duration, coverArt, id) {
       };
       
       player.songs.push(addedSong);
-      console.log(addedSong);
-      console.log(player.songs);
-      createSongElement(id, title, album, duration, coverArt)
+      // console.log(addedSong);
+      // console.log(player.songs);
+
+      const songPrint = document.getElementById("songs");
+
+      while (songPrint.firstChild) {
+        songPrint.firstChild.remove();
+      }
+  
+      sortSongs();
+      printAllSongs();
       return addedSong["id"];
   }
 
