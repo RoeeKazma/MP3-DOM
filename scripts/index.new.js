@@ -53,16 +53,24 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
 
     const durationLbl = document.createElement("label");
     durationLbl.innerText = durationConvertor(arguments[4]);
+    durationLbl.className = "durationLbl";
 
     const currentImg= document.createElement("img");
     currentImg.src = arguments[5];
 
-    children.push(idLbl);
-    children.push(titleLbl);
-    children.push(albumLbl);
-    children.push(artistLbl);
-    children.push(durationLbl);
+    const labelsDiv = document.createElement("div");
+    labelsDiv.className = "songLabels";
+
+    labelsDiv.appendChild(idLbl);
+    labelsDiv.appendChild(titleLbl);
+    labelsDiv.appendChild(albumLbl);
+    labelsDiv.appendChild(artistLbl);
+
     children.push(currentImg);
+    children.push(labelsDiv);
+    children.push(durationLbl);
+    
+
 
     const classes = []
     classes.push(["song"]) // CSS later

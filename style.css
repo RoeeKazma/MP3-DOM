@@ -3,30 +3,46 @@ body {
     text-align: center;
     margin: 0px;
     padding: 0px;
+    background: linear-gradient(transparent,#9eccdb)
 }
 
 h1 {
     text-align: center;
 }
-ul {
-  list-style-type: none;  
-  margin-right: 2%;
-}
 .songs {
   font-size: larger;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .song {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+  border: 5px solid rebeccapurple;
+  padding: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.durationLbl {
+  padding-right: 17%;
+}
+
+.songLabels {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 label {
-  color: red;
+  
 }
 .playlist {
-  color: red;
+  
   display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +52,7 @@ label {
     
 }
 img {
-    margin-right: 35%;
+ 
 }
 
 .selected {
