@@ -4,6 +4,7 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
 h1 {
     text-align: center;
 }
@@ -14,10 +15,29 @@ ul {
 .songs {
   font-size: larger;
 }
-.playlists {
-    font-size: larger;
+
+.song {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+label {
+  color: red;
+}
+.playlist {
+  color: red;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.playlists {
+    font-size: larger;
+    
+}
+img {
+    margin-right: 35%;
+}
 
 .selected {
     border: 3px solid green;

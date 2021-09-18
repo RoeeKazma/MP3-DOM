@@ -16,6 +16,7 @@ function playSong(songId) {
     selectedSong.classList.add(classes);
 }
 
+
 /**
  * Acts on a click event on an element inside the songs list.
  * Should handle clicks on play buttons and remove buttons of songs.
@@ -37,25 +38,32 @@ function handleAddSongEvent(event) {
 
 function createSongElement({ id, title, album, artist, duration, coverArt }) { 
     const children = []
-    const ul = document.createElement("ul");
-    for (let i = 0; i < 5; i++)
-    {
-        if (arguments[i] === arguments[4])
-        {
-            arguments[i] = durationConvertor(arguments[4]);
-        }
-        let list = document.createElement("li"); 
-        list.innerText = arguments[i]
-        ul.append(list);
-    }
+
+    const idLbl = document.createElement("label");
+    idLbl.innerText = arguments[0];
 
     const titleLbl = document.createElement("label");
-    titleLbl.title = arguments[1];
-    let currentImg= document.createElement("img");
+    titleLbl.innerText = arguments[1];
+    
+    const albumLbl = document.createElement("label");
+    albumLbl.innerText = arguments[2];
+
+    const artistLbl = document.createElement("label");
+    artistLbl.innerText = arguments[3];
+
+    const durationLbl = document.createElement("label");
+    durationLbl.innerText = durationConvertor(arguments[4]);
+
+    const currentImg= document.createElement("img");
     currentImg.src = arguments[5];
-    ul.appendChild(currentImg);
-    // children.push(ul)
-     children.push(titleLbl);
+
+    children.push(idLbl);
+    children.push(titleLbl);
+    children.push(albumLbl);
+    children.push(artistLbl);
+    children.push(durationLbl);
+    children.push(currentImg);
+
     const classes = []
     classes.push(["song"]) // CSS later
     const attrs = { onclick: `playSong(${arguments[0]})`,}
@@ -69,19 +77,24 @@ function createSongElement({ id, title, album, artist, duration, coverArt }) {
 function createPlaylistElement({ id, name, songs }) {
     const children = []
 
-    const ul= document.createElement("ul");
-    for(let i=0; i<3; i++)
-    {
-        let li= document.createElement("li");
-        li.innerHTML = arguments[i];
-        ul.appendChild(li);
-    }
-    children.push(ul);
+    const idLbl = document.createElement("label");
+    idLbl.innerText = arguments[0]
+
+    const nameLbl = document.createElement("label");
+    nameLbl.innerText = arguments[1]
+
+    const songsLbl = document.createElement("label");
+    songsLbl.innerText = arguments[2];
+
+    children.push(idLbl);
+    children.push(nameLbl);
+    children.push(songsLbl);
+   
     const classes = []
     classes.push(["playlist"]) // CSS later
     const attrs = {}
     const eventListeners = {}
-    return createElement("div", children, classes, attrs, id, eventListeners)
+    return createElement("div", children, classes, attrs, arguments[0], eventListeners)
     
 }
 
